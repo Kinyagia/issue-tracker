@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 
 import FetchMore from '../../FetchMore';
 import RepositoryItem from '../RepositoryItem';
-import Loading from '../../Loading';
 import Issues from '../../Issue';
 
 import '../style.css';
@@ -17,7 +16,7 @@ const getUpdateQuery = entry => (
 
 	return {
 		...previousResult,
-		entry: {
+		[entry]: {
 			...previousResult[entry],
 			repositories: {
 				...previousResult[entry].repositories,
@@ -53,25 +52,6 @@ const RepositoryList = ({ repositories,loading, fetchMore, entry }) => (
 		>
 			Repositories
 		</FetchMore>
-		{loading ? (
-			<Loading/>
-		) : (
-			repositories.pageInfo.hasNextPage && (
-			<button
-				type="button"
-				onClick={() =>
-					fetchMore({
-						variables: {
-							cursor: repositories.pageInfo.endCursor,
-						}, 
-					})
-				}
-			>
-				More Repositories
-			</button>
-			)
-		)}
-
 	</Fragment>
 );
 

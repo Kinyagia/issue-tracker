@@ -19,7 +19,6 @@ const FetchMore = ({
 			hasNextPage && (
 			
 		<ButtonUnobtrusive
-			type="button"
 			className="FetchMore-button"
 			onClick={() => fetchMore({variables, updateQuery})}
 		>
