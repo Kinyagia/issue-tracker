@@ -20,10 +20,15 @@ class App extends Component {
 
 
 	render() {
+		const {organizationName} =this.state;
+
 		return (
 			<Router>
 				<div className="App">
-					<Navigation/>
+					<Navigation
+						organizationName={organizationName}
+						onOrganizationSearch={this.onOrganizationSearch}
+					/>
 					<div className="App-main">
 						<Route
 							exact
@@ -31,7 +36,7 @@ class App extends Component {
 							component={() => (
 								<div className="App-content_large-header">
 									<Organization
-										organizationName={'the-road-to-learn-react'}
+										organizationName={organizationName}
 									/>
 								</div>
 							)}
